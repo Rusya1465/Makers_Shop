@@ -5,7 +5,9 @@ import CustomTable from "./CustomTable";
 const AdminPanel = () => {
   return (
     <div>
-      Admin Panel
+      <div style={{ textAlign: "center" }}>
+        <h1>Добавить товар</h1>
+      </div>
       <Add />
       <CustomTable />
     </div>

@@ -41,12 +41,9 @@ const CustomTable = () => {
             <TableCell align="rigth">Фото</TableCell>
             <TableCell align="rigth">Описание</TableCell>
             <TableCell align="rigth">Цена</TableCell>
-            <TableCell align="rigth">Автор</TableCell>
-            <TableCell align="rigth">Скидка(в %)</TableCell>
-            <TableCell align="rigth">Номер Продавца</TableCell>
-            <TableCell align="rigth">Категория(память)</TableCell>
+            <TableCell align="rigth">Бренд</TableCell>
+            <TableCell align="rigth">Категория</TableCell>
             <TableCell align="rigth">Количество</TableCell>
-            <TableCell align="rigth">Локация</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -79,15 +76,10 @@ const CustomTable = () => {
                           {product.description}
                         </TableCell>
                         <TableCell align="right">{product.price}</TableCell>
-                        <TableCell align="right">{product.author}</TableCell>
-                        <TableCell align="right">{product.discount}</TableCell>
-                        <TableCell align="right">{product.phone}</TableCell>
+                        <TableCell align="right">{product.brand}</TableCell>
                         <TableCell align="right">{product.category}</TableCell>
                         <TableCell align="right">
                           {product.countInStock}
-                        </TableCell>
-                        <TableCell align="right">
-                          {product.storeAddress}
                         </TableCell>
                       </TableRow>
                     )}
