@@ -1,15 +1,8 @@
-
-import { Route } from 'react-router-dom';
-import './App.css';
-import Routes from './component/Routes';
+import Routes from "./Routes";
+import "./App.css";
 
 function App() {
-  return (
-    <div>
-      <Routes />
-
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
