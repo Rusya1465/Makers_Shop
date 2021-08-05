@@ -10,7 +10,7 @@ export default function SimpleContainer() {
         <>
             <CssBaseline />
 
-            <Typography component="div" style={{ backgroundImage: `url("${background}")`, width: '100vw', height: '80vh', backgroundSize: '100%', padding: ' 10px', backgroundRepeat: 'no-repeat' }} />
+            <Typography component="div" style={{ backgroundImage: `url("${background}")`, width: 'auto', height: '80vh', backgroundSize: '100vw', backgroundRepeat: 'no-repeat' }} />
 
             {/* <Container maxwidth="lg">
                 <h1>This is Container</h1>

@@ -30,7 +30,7 @@ export default function ImgMediaCard() {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        CroMKS
+                        TilekAir
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         Удобные и практичные ботинки на каждый день отлично дополнят гардероб в городском стиле. Качественный пошив, натуральная кожа, мягкий задник, не натирающий пятку, подарят комфорт в каждом шаге. Эту модель можно сочетать с классическими брюками и жакетом, курточкой или коротким пальто.

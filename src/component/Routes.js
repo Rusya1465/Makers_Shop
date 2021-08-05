@@ -4,7 +4,7 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import Navbar from './Header/Navbar';
 import Card from './Home/Card/Card'
 import Footer from './Home/Footer/Footer'
-
+import Bigcard from './Home/Content/Bigcard'
 
 const Routes = () => {
     return (
@@ -12,11 +12,11 @@ const Routes = () => {
             <Navbar />
             <Container />
             <Card />
-
+            <Bigcard />
             <Switch>
 
             </Switch>
-            {/* <Footer /> */}
+            <Footer />
 
         </BrowserRouter>
     );
