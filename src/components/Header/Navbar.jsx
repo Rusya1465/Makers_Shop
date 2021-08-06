@@ -200,6 +200,7 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <Link
+
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
           >
             Контакты
@@ -208,6 +209,12 @@ export default function PrimarySearchAppBar() {
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
           >
             Товары
+          </Link>
+          <Link
+            style={{ margin: "10px", color: "white", textDecoration: "none" }}
+            to="/admin"
+          >
+            Добавить товар
           </Link>
 
           <div className={classes.grow} />

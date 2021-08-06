@@ -1,6 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useHistory } from "react";
+import { Link } from "react-router-dom";
 import { adminContext } from "../../contexts/AdminContext";
 
 const useStyles = makeStyles({
@@ -123,6 +124,9 @@ const Add = () => {
           <button onClick={handleClick} className={classes.button}>
             Добавить товар
           </button>
+          <Link to="/">
+            <button className={classes.button}>Вернутся на главную</button>
+          </Link>
         </div>
       </div>
     </>

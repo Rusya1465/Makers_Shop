@@ -1,9 +1,11 @@
+
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import HomePage from "./components/Home/HomePage";
 import AdminContextProvider from "./contexts/AdminContext";
 import ClientContextProvider from "./contexts/ClientContext";
+import Footer from './components/Footer/Footer';
 
 const Routes = () => {
   return (
@@ -15,7 +17,9 @@ const Routes = () => {
             <Route exact path="/admin" component={AdminPanel} />
           </Switch>
         </BrowserRouter>
+        <Footer />
       </AdminContextProvider>
+
     </ClientContextProvider>
   );
 };
