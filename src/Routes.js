@@ -1,4 +1,4 @@
-import Card from './components/Content/Card'
+
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
@@ -16,7 +16,6 @@ const Routes = () => {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/admin" component={AdminPanel} />
           </Switch>
-          <Card />
         </BrowserRouter>
         <Footer />
       </AdminContextProvider>

@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import background from './image.png'
+import background from './image.jpg'
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -25,10 +25,10 @@ export default function FixedContainer() {
                 <h1 style={{ margin: '13px' }}>Только у нас эксклюзивы</h1>
                 <Typography component="div" style={{
                     backgroundImage: `url("${background}")`,
-                    width: "100vw ",
-                    height: "90vw",
+                    width: "auto",
+                    height: "90vh",
                     backgroundSize: "100%",
-                    justifyContent: 'start',
+                    // justifyContent: 'start',
                     backgroundRepeat: "no-repeat",
                 }} />
             </Container>

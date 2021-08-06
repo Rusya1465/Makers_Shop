@@ -38,11 +38,10 @@ export default function ImgMediaCard({ product }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Typography size="small">{product.price}</Typography>
-        <Button size="small" color="primary">
-          Детали
-        </Button>
+        <Typography size="small" color="textSecondary" >{product.price} </Typography>
+
       </CardActions>
     </Card>
   );
 }
+
