@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "title": "Футболка Polo",
+      "description": "Лучшая Футболка",
+      "price": "14999",
+      "brand": "Makers",
+      "category": "Футболка",
+      "image": "https://www.giftsgifts.ru/upload/iblock/5df/5df16cbb5e9f29a610625a0f711505b4.jpg",
+      "countInStock": "10",
+      "id": 1
+    },
+    {
+      "title": "Кроссовки Nike",
+      "description": "Очень круты кроссовки",
+      "price": "15000",
+      "brand": "Nike",
+      "category": "Обувь",
+      "image": "https://www.tvtshop.ru/upload/store/Products/Products78838/444538.jpg",
+      "countInStock": "15",
+      "id": 2
+    }
+  ]
+}
