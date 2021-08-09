@@ -73,27 +73,12 @@ const Edit = ({ setChangeId }) => {
           <TableCell align="right">
             <input
               onChange={handleInput}
-              value={editProduct.author}
+              value={editProduct.brand}
               type="text"
-              name="author"
+              name="brand"
             />
           </TableCell>
-          <TableCell align="right">
-            <input
-              onChange={handleInput}
-              value={editProduct.discount}
-              type="number"
-              name="discount"
-            />
-          </TableCell>
-          <TableCell align="right">
-            <input
-              onChange={handleInput}
-              value={editProduct.phone}
-              type="number"
-              name="phone"
-            />
-          </TableCell>
+
           <TableCell align="right">
             <input
               onChange={handleInput}
@@ -108,14 +93,6 @@ const Edit = ({ setChangeId }) => {
               value={editProduct.countInStock}
               type="number"
               name="countInStock"
-            />
-          </TableCell>
-          <TableCell align="right">
-            <input
-              onChange={handleInput}
-              value={editProduct.storeAddress}
-              type="text"
-              name="storeAddress"
             />
           </TableCell>
         </TableRow>

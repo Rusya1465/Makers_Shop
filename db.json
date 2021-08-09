@@ -30,6 +30,36 @@
       "image": "https://images.stockx.com/images/Reebok-Pump-Omni-Zone-II-Dee-Brown-2021-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1617135332",
       "countInStock": "16",
       "id": 3
+    },
+    {
+      "title": "Lacoste TWIN SERVE 0721 1 SMA",
+      "description": "Кроссовки Lacoste - это дань уважения спортивному прошлому бренда в сочетании с современными технологиями. Универсальность, удобство и практичность сделает их фаворитами вашего гардероба.",
+      "price": "25000",
+      "brand": "Lacoste",
+      "category": "Кроссовки",
+      "image": "https://lacoste.ru/upload/resize_cache/catalog/800_800_1/741SMA00831R5.jpg",
+      "countInStock": "5",
+      "id": 4
+    },
+    {
+      "title": "Lacoste VITESSE RNR TD 0721 1 SMA",
+      "description": "Кеды - обязательный элемент гардероба. Четкие линии и сдержанный силуэт будет уместен как на деловой встрече, так и на прогулке с любимыми.",
+      "price": "15000",
+      "brand": "Lacoste",
+      "category": "Кроссовки",
+      "image": "https://lacoste.ru/upload/resize_cache/catalog/800_800_1/741SMA0091NV1.jpg",
+      "countInStock": "19",
+      "id": 5
+    },
+    {
+      "title": "Makers cross",
+      "description": "Самая удобная обувь",
+      "price": "99000",
+      "brand": "Makers",
+      "category": "Кроссовки",
+      "image": "https://wmpics.pics/di-B04U.jpg",
+      "countInStock": "50",
+      "id": 6
     }
   ]
 }

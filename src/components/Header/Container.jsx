@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
   divs: {
     display: "flex",
-    flexWrap: 'wrap'
+    flexWrap: "wrap",
   },
 });
 
@@ -29,7 +29,6 @@ export default function SimpleContainer() {
   const classes = useStyles();
   return (
     <>
-
       <CssBaseline />
       <Container className={classes.container} maxwidth="lg">
         <h1 style={{ color: "black" }}>Новинки этого месяца</h1>

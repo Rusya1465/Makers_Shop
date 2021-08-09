@@ -120,8 +120,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Регистрация</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Вход</MenuItem>
     </Menu>
   );
 
@@ -200,12 +200,12 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <Link
-
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
           >
             Контакты
           </Link>
           <Link
+            to="/products-page"
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
           >
             Товары
