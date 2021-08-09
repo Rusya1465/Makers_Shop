@@ -7,7 +7,6 @@ import { makeStyles } from "@material-ui/core";
 import Card from "../Home/Card/Card";
 import { useContext } from "react";
 import { clientContext } from "../../contexts/ClientContext";
-
 const useStyles = makeStyles({
   container: {
     margin: "0 auto",
@@ -17,8 +16,10 @@ const useStyles = makeStyles({
   },
   divs: {
     display: "flex",
+    flexWrap: "wrap",
   },
 });
+
 export default function SimpleContainer() {
   const { products, getProducts } = useContext(clientContext);
   //   console.log(products);
@@ -29,7 +30,9 @@ export default function SimpleContainer() {
   return (
     <>
       <CssBaseline />
-
+      <Container className={classes.container} maxwidth="lg">
+        <h1 style={{ color: "black" }}>Новинки этого месяца</h1>
+      </Container>
       <Typography
         component="div"
         style={{
@@ -40,11 +43,7 @@ export default function SimpleContainer() {
           padding: " 10px",
           backgroundRepeat: "no-repeat",
         }}
-      >
-        <Container className={classes.container} maxwidth="lg">
-          <h1>Makers Shop</h1>
-        </Container>
-      </Typography>
+      ></Typography>
 
       <h1 style={{ textAlign: "center" }}>Каталог товаров</h1>
       <div className={classes.divs}>
