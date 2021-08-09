@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,8 +14,10 @@ import AccountCirle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { Link } from "react-router-dom";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { clientContext } from "../../contexts/ClientContext";
+import { Link, useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   back: {
@@ -84,10 +86,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const PrimarySearchAppBar = () => {
   const classes = useStyles();
+  const history = useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [searchVal, setSearchVal] = useState(getSearchVal() || '')
+  const { getProducts } = useContext(clientContext)
+
+
+  function getSearchVal() {
+    const search = new URLSearchParams(history.location.search)
+
+    return search.get('q')
+  }
+
+  const handleValue = (e) => {
+    const search = new URLSearchParams(history.location.search)
+    search.set('q', e.target.value)
+    history.push(`${history.location.pathname}?${search.toString()}`)
+    setSearchVal(e.target.value)
+    getProducts(history)
+  }
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -120,8 +140,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Регистрация</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Вход</MenuItem>
+      <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
+        <MenuItem onClick={handleMenuClose}>Регистрация</MenuItem>
+      </Link>
+      <Link to='/login' style={{ textDecoration: 'none', color: 'black' }}>
+        <MenuItem onClick={handleMenuClose}>Вход</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -197,6 +221,8 @@ export default function PrimarySearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              value={searchVal}
+              onChange={handleValue}
             />
           </div>
           <Link
@@ -248,3 +274,7 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+
+
+export default PrimarySearchAppBar;

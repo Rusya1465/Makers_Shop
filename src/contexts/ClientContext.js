@@ -11,22 +11,28 @@ const INIT_STATE = {
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "GET_PRODUCTS":
-      return { ...state, products: action.payload };
+      return { ...state, products: action.payload.data };
     default:
       return state;
   }
 };
 
+
 const ClientContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const getProducts = async () => {
-    const { data } = await axios(JSON_API);
+
+  const getProducts = async (history) => {
+    const search = new URLSearchParams(history.location.search)
+    search.set('_limit', 6)
+    history.push(`${history.location.pathname}?${search.toString()}`)
+    const res = await axios(`${JSON_API}/products-page${window.location.search}`)
     dispatch({
       type: "GET_PRODUCTS",
-      payload: data,
+      payload: res,
     });
   };
+
 
   return (
     <clientContext.Provider

@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { clientContext } from "../../../contexts/ClientContext";
 import Card from "../Card/Card";
 
@@ -15,11 +16,13 @@ const useStyles = makeStyles({
 
 const AllProducts = () => {
   const { products, getProducts } = useContext(clientContext);
+  const history = useHistory()
   const classes = useStyles();
+
   useEffect(() => {
-    getProducts();
+    getProducts(history);
   }, []);
-  console.log(products);
+  // console.log(getProducts);
   return (
     <div>
       <h2 className={classes.titleTwo}>Все товары</h2>
