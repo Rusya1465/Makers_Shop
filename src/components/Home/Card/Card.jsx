@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -7,6 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { IconButton } from "@material-ui/core";
+import { clientContext } from "../../../contexts/ClientContext";
+import { ShoppingCart } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   root: {
@@ -17,6 +20,8 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard({ product }) {
   const classes = useStyles();
+  const { addAndDeleteProductInCart, checkProductInCart, getProductDetail } =
+    useContext(clientContext);
 
   return (
     <Card className={classes.root}>
@@ -38,10 +43,17 @@ export default function ImgMediaCard({ product }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Typography size="small" color="textSecondary" >{product.price} </Typography>
-
+        <Typography size="small" color="textSecondary">
+          {product.price}{" "}
+        </Typography>
       </CardActions>
+      <IconButton
+        onClick={() => addAndDeleteProductInCart(product)}
+        variant="contained"
+        color={checkProductInCart(product.id) ? "secondary" : "primary"}
+      >
+        <ShoppingCart />
+      </IconButton>
     </Card>
   );
 }
-

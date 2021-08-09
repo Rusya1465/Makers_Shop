@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,16 +14,18 @@ import AccountCirle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { clientContext } from "../../contexts/ClientContext";
+import { ShoppingBasket } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   back: {
     backgroundColor: "red",
   },
-  grow: {
-    flexGrow: 1,
-  },
+  // grow: {
+  //   flexGrow: 1,
+  // },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -85,9 +87,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const { productsCountInCart, getProducts } = useContext(clientContext);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -109,6 +114,18 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  let search = new URLSearchParams(history.location.search);
+  const [searchWord, setSearchWord] = useState(search.get("q") || "");
+  function handleSearchInput(params, value) {
+    setSearchWord(value);
+    search.set(params, value);
+    search.set("_page", 1);
+    let url = `${history.location.pathname}?${search.toString()}`;
+  }
+  useEffect(() => {
+    // console.log(searchWord);
+    getProducts(history);
+  }, [searchWord]);
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -183,19 +200,23 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            MakerS-shop
-          </Typography>
+          <Link to="/">
+            <Typography className={classes.title} variant="h6" noWrap>
+              MakerS-shop
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
+              onChange={(e) => handleSearchInput("q", e.target.value)}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              name="searchValue"
               inputProps={{ "aria-label": "search" }}
             />
           </div>
@@ -219,6 +240,13 @@ export default function PrimarySearchAppBar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <Link to="/cart">
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={productsCountInCart} color="secondary">
+                  <ShoppingBasket />
+                </Badge>
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"

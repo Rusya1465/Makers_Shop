@@ -3,7 +3,7 @@
     {
       "title": "Кроссовки Gazzel Test",
       "description": "Удобные и практичные кроссовки на каждый день отлично дополнят гардероб в городском стиле. ",
-      "price": "2400",
+      "price": 2400,
       "brand": "Adidas",
       "category": "Кроссовки",
       "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/61f87dec481e4512823ea7fb0080ba1a_9366/Krossovki_Gazelle_chernyj_BB5476_01_standard.jpg",
@@ -14,7 +14,7 @@
     {
       "title": "Adapt BB",
       "description": "Основная часть кроссовка выполнена из плетёного синтетического материала TPU Knit в передней части и эластичного Ballistic Mesh внутри «воротничка». ",
-      "price": "10000",
+      "price": 10000,
       "brand": "Nike",
       "category": "Кроссовки",
       "image": "https://www.ixbt.com/img/n1/news/2019/0/2/Sp19_BB_Nike_Adapt_20181218_NIKE0538_Detail5_rectangle_1600_large.jpg",
@@ -24,7 +24,7 @@
     {
       "title": "Pump Omni Zone ||",
       "description": "Hexalite™ - технология, которая поглощает удары и защищает ноги от травм.",
-      "price": "20000",
+      "price": 20000,
       "brand": "Reebok",
       "category": "Кроссовки",
       "image": "https://images.stockx.com/images/Reebok-Pump-Omni-Zone-II-Dee-Brown-2021-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&q=90&dpr=2&trim=color&updated_at=1617135332",
@@ -34,7 +34,7 @@
     {
       "title": "Lacoste TWIN SERVE 0721 1 SMA",
       "description": "Кроссовки Lacoste - это дань уважения спортивному прошлому бренда в сочетании с современными технологиями. Универсальность, удобство и практичность сделает их фаворитами вашего гардероба.",
-      "price": "25000",
+      "price": 25000,
       "brand": "Lacoste",
       "category": "Кроссовки",
       "image": "https://lacoste.ru/upload/resize_cache/catalog/800_800_1/741SMA00831R5.jpg",
@@ -44,7 +44,7 @@
     {
       "title": "Lacoste VITESSE RNR TD 0721 1 SMA",
       "description": "Кеды - обязательный элемент гардероба. Четкие линии и сдержанный силуэт будет уместен как на деловой встрече, так и на прогулке с любимыми.",
-      "price": "15000",
+      "price": 15000,
       "brand": "Lacoste",
       "category": "Кроссовки",
       "image": "https://lacoste.ru/upload/resize_cache/catalog/800_800_1/741SMA0091NV1.jpg",
@@ -54,7 +54,7 @@
     {
       "title": "Makers cross",
       "description": "Самая удобная обувь",
-      "price": "99000",
+      "price": 99000,
       "brand": "Makers",
       "category": "Кроссовки",
       "image": "https://wmpics.pics/di-B04U.jpg",
