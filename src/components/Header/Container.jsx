@@ -7,6 +7,8 @@ import { makeStyles } from "@material-ui/core";
 import Card from "../Home/Card/Card";
 import { useContext } from "react";
 import { clientContext } from "../../contexts/ClientContext";
+import { Carousel } from "react-bootstrap";
+import SliderHead from "./SliderHead";
 const useStyles = makeStyles({
   container: {
     margin: "0 auto",
@@ -33,7 +35,8 @@ export default function SimpleContainer() {
       <Container className={classes.container} maxwidth="lg">
         <h1 style={{ color: "black" }}>Новинки этого месяца</h1>
       </Container>
-      <Typography
+      <SliderHead />
+      {/* <Typography
         component="div"
         style={{
           backgroundImage: `url("${background}")`,
@@ -43,7 +46,7 @@ export default function SimpleContainer() {
           padding: " 10px",
           backgroundRepeat: "no-repeat",
         }}
-      ></Typography>
+      ></Typography> */}
 
       <h1 style={{ textAlign: "center" }}>Каталог товаров</h1>
       <div className={classes.divs}>

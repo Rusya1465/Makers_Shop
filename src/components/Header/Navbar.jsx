@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { alpha, makeStyles } from "@material-ui/core/styles";
+import {
+  alpha,
+  makeStyles,
+  useTheme,
+  Theme,
+  createStyles,
+} from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,14 +23,26 @@ import { Link, useHistory } from "react-router-dom";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { ShoppingBasket } from "@material-ui/icons";
 import { clientContext } from "../../contexts/ClientContext";
+import clsx from "clsx";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import ListItem from "@material-ui/core/ListItem";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const useStyles = makeStyles((theme) => ({
   back: {
     backgroundColor: "red",
   },
-  // grow: {
-  //   flexGrow: 1,
-  // },
+  grow: {
+    flexGrow: 2,
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -48,6 +66,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(3),
       width: "auto",
     },
+  },
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -76,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
+    alignSelf: "center",
   },
   sectionMobile: {
     display: "flex",
@@ -92,12 +119,21 @@ export default function PrimarySearchAppBar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [searchVal, setSearchVal] = useState(getSearchVal() || "");
   const { getProducts, productsCountInCart } = useContext(clientContext);
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
 
   function getSearchVal() {
     const search = new URLSearchParams(history.location.search);
 
     return search.get("q");
   }
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const handleValue = (e) => {
     const search = new URLSearchParams(history.location.search);
@@ -125,6 +161,11 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const [dropOpen, setDropOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
   };
 
   let search = new URLSearchParams(history.location.search);
@@ -210,10 +251,11 @@ export default function PrimarySearchAppBar() {
       >
         <Toolbar>
           <IconButton
-            edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -239,11 +281,12 @@ export default function PrimarySearchAppBar() {
               onChange={handleValue}
             />
           </div>
-          <Link
-            style={{ margin: "10px", color: "white", textDecoration: "none" }}
-          >
-            Контакты
-          </Link>
+          <DropdownButton id="dropdown-item-button" title="Dropdown button">
+            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+            <Dropdown.Item as="button">Action</Dropdown.Item>
+            <Dropdown.Item as="button">Another action</Dropdown.Item>
+            <Dropdown.Item as="button">Something else</Dropdown.Item>
+          </DropdownButton>
           <Link
             to="/products-page"
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
@@ -290,6 +333,47 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={open}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
       {renderMobileMenu}
       {renderMenu}
     </div>
