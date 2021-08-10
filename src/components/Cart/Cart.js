@@ -24,10 +24,10 @@ const Cart = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>image</th>
-                    <th>title</th>
-                    <th>price</th>
-                    <th>count</th>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
                     <th>Сумма</th>
                   </tr>
                 </thead>
@@ -54,7 +54,7 @@ const Cart = () => {
                   ))}
                 </tbody>
               </table>
-              <h4>Общая сумма:{calcTotalPrice(cartData)}</h4>
+              <h4>Всего: {calcTotalPrice(cartData)}</h4>
               <button onClick={handleClick}>Оплатить</button>
             </div>
           </div>

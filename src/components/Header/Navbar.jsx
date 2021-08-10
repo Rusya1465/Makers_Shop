@@ -10,14 +10,13 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import AccountCirle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link, useHistory } from "react-router-dom";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { clientContext } from "../../contexts/ClientContext";
 import { ShoppingBasket } from "@material-ui/icons";
+import { clientContext } from "../../contexts/ClientContext";
 
 const useStyles = makeStyles((theme) => ({
   back: {
@@ -91,8 +90,22 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [searchVal, setSearchVal] = useState(getSearchVal() || "");
+  const { getProducts, productsCountInCart } = useContext(clientContext);
 
-  const { productsCountInCart, getProducts } = useContext(clientContext);
+  function getSearchVal() {
+    const search = new URLSearchParams(history.location.search);
+
+    return search.get("q");
+  }
+
+  const handleValue = (e) => {
+    const search = new URLSearchParams(history.location.search);
+    search.set("q", e.target.value);
+    history.push(`${history.location.pathname}?${search.toString()}`);
+    setSearchVal(e.target.value);
+    getProducts(history);
+  };
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -137,8 +150,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Регистрация</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Вход</MenuItem>
+      <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+        <MenuItem onClick={handleMenuClose}>Регистрация</MenuItem>
+      </Link>
+      <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+        <MenuItem onClick={handleMenuClose}>Вход</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -218,6 +235,8 @@ export default function PrimarySearchAppBar() {
               }}
               name="searchValue"
               inputProps={{ "aria-label": "search" }}
+              value={searchVal}
+              onChange={handleValue}
             />
           </div>
           <Link

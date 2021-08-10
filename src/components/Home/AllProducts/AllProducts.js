@@ -20,9 +20,11 @@ const AllProducts = () => {
   const { products, getProducts } = useContext(clientContext);
   const history = useHistory();
   const classes = useStyles();
+
   useEffect(() => {
     getProducts(history);
   }, []);
+  // console.log(getProducts);
   return (
     <div>
       <h2 className={classes.titleTwo}>Все товары</h2>
