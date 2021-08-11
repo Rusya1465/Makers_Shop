@@ -32,16 +32,11 @@ export default function ControlledCarousel() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="holder.js/800x400?text=Third slide&bg=20232a"
+            src="https://sun9-8.userapi.com/impf/rgjpKweuo8F4jr9h2Zr-ljQ6aH8e8WUiEZ0Ygg/d5eP4TYnZ4Y.jpg?size=1590x400&quality=95&crop=0,0,1590,400&sign=bd12e7436175fc9a151f9014d62d3c8e&type=cover_group"
             alt="Third slide"
           />
 
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </div>

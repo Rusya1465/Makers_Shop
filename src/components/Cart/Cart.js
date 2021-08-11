@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 import { clientContext } from "../../contexts/ClientContext";
 import { calcSubPrice, calcTotalPrice } from "../../helpers/calcPrice";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
-const Cart = () => {
+const Cart = ({ handleClose }) => {
   const { getCart, cartData, changeCountProduct, makeOrder } =
     useContext(clientContext);
   useEffect(() => {
@@ -11,8 +13,9 @@ const Cart = () => {
   }, []);
   const history = useHistory();
   function handleClick() {
+    handleClose();
     makeOrder();
-    history.push("/");
+    history.push("/pay-form");
   }
   // console.log(cartData);
   return (
@@ -55,7 +58,9 @@ const Cart = () => {
                 </tbody>
               </table>
               <h4>Всего: {calcTotalPrice(cartData)}</h4>
-              <button onClick={handleClick}>Оплатить</button>
+              <Link to="/pay-form">
+                <button onClick={handleClick}>Оплатить</button>
+              </Link>
             </div>
           </div>
         ) : (

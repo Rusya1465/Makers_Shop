@@ -35,6 +35,10 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import ListItem from "@material-ui/core/ListItem";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Cart from "../Cart/Cart";
+import { Nav, NavDropdown } from "react-bootstrap";
 
 const useStyles = makeStyles((theme) => ({
   back: {
@@ -121,6 +125,9 @@ export default function PrimarySearchAppBar() {
   const { getProducts, productsCountInCart } = useContext(clientContext);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function getSearchVal() {
     const search = new URLSearchParams(history.location.search);
@@ -249,6 +256,14 @@ export default function PrimarySearchAppBar() {
         }}
         position="static"
       >
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Корзина</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Cart handleClose={handleClose} />
+          </Modal.Body>
+        </Modal>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -281,12 +296,24 @@ export default function PrimarySearchAppBar() {
               onChange={handleValue}
             />
           </div>
-          <DropdownButton id="dropdown-item-button" title="Dropdown button">
-            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-            <Dropdown.Item as="button">Action</Dropdown.Item>
-            <Dropdown.Item as="button">Another action</Dropdown.Item>
-            <Dropdown.Item as="button">Something else</Dropdown.Item>
-          </DropdownButton>
+          <Nav>
+            <NavDropdown
+              id="nav-dropdown-dark-example"
+              title="Dropdown"
+              menuVariant="dark"
+              variant="dark"
+            >
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
           <Link
             to="/products-page"
             style={{ margin: "10px", color: "white", textDecoration: "none" }}
@@ -302,8 +329,12 @@ export default function PrimarySearchAppBar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link to="/cart">
-              <IconButton aria-label="show 4 new mails" color="inherit">
+            <Link>
+              <IconButton
+                aria-label="show 4 new mails"
+                color="inherit"
+                onClick={handleShow}
+              >
                 <Badge badgeContent={productsCountInCart} color="secondary">
                   <ShoppingBasket />
                 </Badge>
