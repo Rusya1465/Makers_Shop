@@ -11,12 +11,17 @@ const INIT_STATE = {
     ? JSON.parse(localStorage.getItem("cart")).products.length
     : 0,
   cartData: null,
+  paginationPages: 1,
 };
 
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "GET_PRODUCTS":
-      return { ...state, products: action.payload.data };
+      return {
+        ...state,
+        products: action.payload.data,
+        paginationPages: Math.ceil(action.payload.headers["x-total-count"] / 3),
+      };
     case "ADD_AND_DELETE_PRODUCT_IN_CART":
       return { ...state, productsCountInCart: action.payload };
     case "GET_CART":
@@ -124,6 +129,10 @@ const ClientContextProvider = ({ children }) => {
     });
   }
 
+  // function cartClose {
+
+  // }
+
   return (
     <clientContext.Provider
       value={{
@@ -136,6 +145,7 @@ const ClientContextProvider = ({ children }) => {
         changeCountProduct,
         makeOrder,
         addAndDeleteProductInCart,
+        paginationPages: state.paginationPages,
       }}
     >
       {children}

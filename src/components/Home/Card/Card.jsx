@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { IconButton } from "@material-ui/core";
 import { clientContext } from "../../../contexts/ClientContext";
 import { ShoppingCart } from "@material-ui/icons";
+import "./card.css";
 
 const useStyles = makeStyles({
   root: {
@@ -42,18 +43,18 @@ export default function ImgMediaCard({ product }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className="shoping_box">
         <Typography size="small" color="textSecondary">
           {product.price}{" "}
         </Typography>
+        <IconButton
+          onClick={() => addAndDeleteProductInCart(product)}
+          variant="contained"
+          color={checkProductInCart(product.id) ? "secondary" : "primary"}
+        >
+          <ShoppingCart />
+        </IconButton>
       </CardActions>
-      <IconButton
-        onClick={() => addAndDeleteProductInCart(product)}
-        variant="contained"
-        color={checkProductInCart(product.id) ? "secondary" : "primary"}
-      >
-        <ShoppingCart />
-      </IconButton>
     </Card>
   );
 }
