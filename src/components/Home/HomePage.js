@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "../Header/Container";
-import Card from '../Content/Card'
-import Login from "../Auth/Login";
+import Card from "../Content/Card";
 
 const HomePage = () => {
   return (

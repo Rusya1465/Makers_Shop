@@ -6,16 +6,15 @@ import AdminContextProvider from "./contexts/AdminContext";
 import ClientContextProvider from "./contexts/ClientContext";
 import Footer from "./components/Footer/Footer";
 import AllProducts from "./components/Home/AllProducts/AllProducts";
-import Login from "./components/Auth/Login";
+import Navbar from "./components/Header/Navbar";
 import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 import AuthContextProvider from "./contexts/AuthContext";
-
-import Navbar from "./components/Header/Navbar"
+import PayForm from "./components/Cart/PayForm";
 
 const Routes = () => {
   return (
     <AuthContextProvider>
-
       <ClientContextProvider>
         <AdminContextProvider>
           <BrowserRouter>
@@ -24,14 +23,14 @@ const Routes = () => {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/admin" component={AdminPanel} />
               <Route exact path="/products-page" component={AllProducts} />
-              <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/pay-form" component={PayForm} />
             </Switch>
           </BrowserRouter>
           <Footer />
         </AdminContextProvider>
       </ClientContextProvider>
-
     </AuthContextProvider>
   );
 };
