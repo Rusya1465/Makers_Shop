@@ -24,7 +24,6 @@ const useStyles = makeStyles({
 
 export default function SimpleContainer() {
   const { products, getProducts } = useContext(clientContext);
-  //   console.log(products);
   useEffect(() => {
     getProducts();
   }, []);
